@@ -5,7 +5,7 @@
  * @param {number} size - The size of each chunk.
  * @returns {Array} - A new array with the chunked arrays.
  */
-export function chunkArray(array, size) {
+export  function chunkArray(array, size) {
     if (!Array.isArray(array)) {
       throw new TypeError('The first argument must be an array.');
     }
@@ -20,3 +20,6 @@ export function chunkArray(array, size) {
     return result;
   }
   
+
+
+
