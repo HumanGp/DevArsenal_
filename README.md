@@ -22,6 +22,7 @@ npm install devarsenal
 
 Usage Example
 Once installed, you can use DevArsenal in your project like this:
+```
 
 ```javascript
 const { chunkArray, mergeObjects } = require('devarsenal');
@@ -34,7 +35,7 @@ const chunked = chunkArray(arr, 2);  // [[1, 2], [3, 4], [5, 6]]
 const obj1 = { a: 1, b: 2 };
 const obj2 = { b: 3, c: 4 };
 const merged = mergeObjects(obj1, obj2);  // { a: 1, b: 3, c: 4 }
-
+```
 Contributing
 We welcome contributions! Feel free to fork the repo and submit pull requests. Please follow the standard JavaScript style guide and write clear commit messages.
 
