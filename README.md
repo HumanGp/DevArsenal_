@@ -36,6 +36,6 @@ const obj1 = { a: 1, b: 2 };
 const obj2 = { b: 3, c: 4 };
 const merged = mergeObjects(obj1, obj2);  // { a: 1, b: 3, c: 4 }
 ```
-Contributing
+###Contributing
 We welcome contributions! Feel free to fork the repo and submit pull requests. Please follow the standard JavaScript style guide and write clear commit messages.
 
