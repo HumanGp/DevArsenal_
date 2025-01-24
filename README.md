@@ -19,10 +19,10 @@ To use **DevArsenal**, simply include it in your project:
 
 ```bash
 npm install devarsenal
-
+```
 Usage Example
 Once installed, you can use DevArsenal in your project like this:
-```
+
 
 ```javascript
 const { chunkArray, mergeObjects } = require('devarsenal');
