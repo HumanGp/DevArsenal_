@@ -1,5 +1,7 @@
 
-import {chunkArray} from './arrayUtils.js'
+import * as array from './arrayUtils.js'
 
-const array = [12, 32, 46, [2, 6, 9]];
-console.log(chunkArray(array, 2));
+const arr = [12,32,46,[2,6,9]];
+const arr2 = [1,1,2,3,2]
+console.log(array.removeDuplicates(arr2))
+console.log(array.chunkArray(arr, 2));
