@@ -20,25 +20,35 @@
     return result;
   }
 
+  //--------------------remove duplicates------------
+ /**
+ * Removes duplicates from an array (including nested arrays) and returns a new array of unique values.
+ * Ensures no value repeats in either the parent array or nested arrays.
 
- //----------------------------remove duplicates----------//
-/**
- * removes duplicates from an array and  returns  an array of unique "chars"
- * @param {Array} array - The array to remove duplicates
- * @returns {Array} - A new array only with unique "chars"
-*/
+ * @param {Array} array - The array to process and remove duplicates from.
+ * @returns {Array} - A new array containing only unique values.
+ */
   const removeDuplicates = (array) => {
-  const seen = {};  // Object to store unique values
-  const uniqueArray = [];  // Array to store the final result
-
-  for (const item of array) {
-    if (!seen[item]) {
-      seen[item] = true;
-      uniqueArray.push(item);
+ const seen = new Set(); // Set to track all unique values across the array
+ const processArray = (arr) => {
+  const uniqueArray = [];
+  for (const item of arr) {
+   if (Array.isArray(item)) {
+    // Recursively process nested arrays
+    const nestedUnique = processArray(item);
+    if (nestedUnique.length > 0) {
+     uniqueArray.push(nestedUnique);
     }
+   } else if (!seen.has(item)) {
+    // Add unique primitive values to the set and result array
+    seen.add(item);
+    uniqueArray.push(item);
+   }
   }
-
   return uniqueArray;
+ };
+
+ return processArray(array);
 };
 
 export {chunkArray,removeDuplicates}
