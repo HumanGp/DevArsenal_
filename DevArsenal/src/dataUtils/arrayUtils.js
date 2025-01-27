@@ -1,4 +1,7 @@
 'use strict';
+
+import { forIn, functionsIn } from "lodash";
+
 // -------------------------------chunkArray------------------------- //
 /**
  * Splits an array into smaller chunks of a given size.
@@ -92,10 +95,56 @@ function intersect(arr1, arr2) {
   return arr1.filter((item) => set2.has(item)); // Filter arr1 based on presence in set2
 }
 
+//--------------------------------no dictinary of below code
+//----------------------------------array difference----//
+/**
+ * Computes the difference between two arrays, returning elements from the first array
+ * that are not present in the second array.
+ * 
+ * @param {Array} arr1 - The first array to compare.
+ * @param {Array} arr2 - The second array to compare against.
+ * @returns {Array} An array containing elements from `arr1` that are not in `arr2`.
+ */
+function arrayDifference(arr1,arr2) {
+  let unique= new Set(arr2)
+  let result=[]
+
+  arr1.forEach(element=>{
+    if(!unique.has(element)){
+   result.push(element)
+    }
+  })
+  return result
+  
+}
+
+//-------------------sort by key-------//
+/**
+ * Sorts an array of objects by a specified key.
+ * 
+ * @param {Object[]} arrayOfObj - The array of objects to be sorted.
+ * @param {string} key - The key in each object to sort by.
+ * @returns {Object[]} A new array of objects sorted by the specified key.
+ */
+function sortByKey(arrayOfObj, key) {
+  return arrayOfObj.sort((a,b) => {
+    if (typeof a[key] === 'number' && typeof b[key] === 'number') {
+      return a[key] - b[key];
+    } else if (typeof a[key] === 'string' && typeof b[key] === 'string') {
+      return a[key].localeCompare(b[key]);
+    }
+    return 0; // Fallback for non-comparable types
+  });
+}
+
+
+
 // -------------------------------Exports--------------------------- //
 export {
   chunkArray,
   removeDuplicates,
   flattenArray,
   intersect,
+  sortByKey,
+  arrayDifference,
 };
