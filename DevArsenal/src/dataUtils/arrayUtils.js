@@ -1,7 +1,5 @@
 'use strict';
 
-import { forIn, functionsIn } from "lodash";
-
 // -------------------------------chunkArray------------------------- //
 /**
  * Splits an array into smaller chunks of a given size.
@@ -95,7 +93,7 @@ function intersect(arr1, arr2) {
   return arr1.filter((item) => set2.has(item)); // Filter arr1 based on presence in set2
 }
 
-//--------------------------------no dictinary of below code
+
 //----------------------------------array difference----//
 /**
  * Computes the difference between two arrays, returning elements from the first array
@@ -123,7 +121,7 @@ function arrayDifference(arr1,arr2) {
  * Sorts an array of objects by a specified key.
  * 
  * @param {Object[]} arrayOfObj - The array of objects to be sorted.
- * @param {string} key - The key in each object to sort by.
+ * @param {string} key - The key in each object to sort by. it should be a string
  * @returns {Object[]} A new array of objects sorted by the specified key.
  */
 function sortByKey(arrayOfObj, key) {
@@ -139,12 +137,13 @@ function sortByKey(arrayOfObj, key) {
 
 
 
+
 // -------------------------------Exports--------------------------- //
 export {
   chunkArray,
   removeDuplicates,
   flattenArray,
   intersect,
-  sortByKey,
-  arrayDifference,
+   arrayDifference,
+   sortByKey,
 };
