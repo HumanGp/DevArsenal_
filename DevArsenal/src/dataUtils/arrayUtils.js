@@ -135,6 +135,48 @@ function sortByKey(arrayOfObj, key) {
   });
 }
 
+// Group By Key
+function groupByKey(arrayObj, key) {
+ return arrayObj.reduce((result, obj) => {
+  const keyValue = obj[key]; // Get the value of the specified key
+  if (!result[keyValue]) {
+   result[keyValue] = []; // Initialize an array for the key if it doesn't exist
+  }
+  result[keyValue].push(obj); // Add the object to the corresponding group
+  return result;
+ }, {});
+}
+
+//Partition Array
+function partitionArray(array, condition) {
+  return array.reduce(
+    ([pass, fail], element) => {
+      if (condition(element)) {
+        pass.push(element); // If condition is true, add to 'pass'
+      } else {
+        fail.push(element); // Otherwise, add to 'fail'
+      }
+      return [pass, fail];
+    },
+    [[], []] // Initialize with two empty arrays: [pass, fail]
+  );
+}
+
+// Zip Arrays
+function zipArrays(...arrays) {
+ // Find the length of the shortest array
+ const minLength = Math.min(...arrays.map(arr => arr.length));
+
+ // Create a new array by combining corresponding elements from each array
+ const result = [];
+ for (let i = 0; i < minLength; i++) {
+  result.push(arrays.map(arr => arr[i]));
+ }
+
+ return result;
+}
+
+
 
 
 

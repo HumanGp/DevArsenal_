@@ -1,6 +1,6 @@
 ### Chunk Array
  ```javascript
-  /**
+ /**
  * Splits an array into smaller chunks of a given size.
  * @param {Array} array - The array to chunk.
  * @param {number} size - The size of each chunk.
@@ -52,7 +52,6 @@
 ```
   ##### example
   ```javascript
-  // ----------------------test array flattening-------------------------------//
 //------2D array
      let twodimentionArray=[1,2,[2,3,4]]
     console.log(array.flattenArray(twodimentionArray))
@@ -113,18 +112,18 @@
 ```
   ##### example
   ```javascript
-       let arrayObj=[
-        {name:'James',age:7},
-        {name:'John',age:14},
-        {name:'Tovald',age:27}
-     ]  
+   let arrayObj=[
+    {name:'James',age:7},
+    {name:'John',age:14},
+    {name:'Tovald',age:27}
+                ]  
      console.log(array.sortByKey(arrayObj,'age'))
-     /*output:
-              [
-                { name: 'James', age: 7 },
-                { name: 'John', age: 14 },
-                { name: 'Tovald', age: 27 }
-              ]
+ /*output:
+     [
+      { name: 'James', age: 7 },
+      { name: 'John', age: 14 },
+      { name: 'Tovald', age: 27 }
+     ]
     */
   ```
 
