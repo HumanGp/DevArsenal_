@@ -191,10 +191,43 @@ console.log(array.groupByKey(keyArray, 'id'));
 ```
 ##### Example
 ```javascript
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
-const [even, odd] = array.partitionArray(numbers, x => x % 2 === 0);
-console.log(`even: ${even}`); // Output: even: 2, 4, 6, 8
-console.log(`odd: ${odd}`);   // Output: odd: 1, 3, 5, 7
+//--test with even and odd
+    let numbers =[1,2,3,4,5,6,7,8]
+
+    const [even,odd] = array.partitionArray(numbers, x => x%2 === 0)
+    //console.log(`even:${even}`)
+    //console.log(`odd:${odd}`)
+    /*output: even:2,4,6,8
+              odd:1,3,5,7
+    */
+
+//--test with Objects
+    const people=[
+        {name:'Alice', age:30},
+        {name:'Bob', age:16},
+        {name:'Tom', age:26},
+        {name:'Ann', age:19},
+        {name:'Ruby', age:18},
+        {name:'Andrew', age:10},
+        {name:'Thomas', age:56},
+    ]
+
+    const [adults,minors] = array.partitionArray( people , person=> person.age >= 18 )
+    //console.log(`adults :`,adults)
+    //console.log(`minors :`,minors)
+
+    /* output : 
+        adults : [
+           { name: 'Alice', age: 30 },
+           { name: 'Tom', age: 26 },
+           { name: 'Ann', age: 19 },
+           { name: 'Ruby', age: 18 },
+          { name: 'Thomas', age: 56 }
+              ]
+
+        minors : [ { name: 'Bob', age: 16 }, { name: 'Andrew', age: 10 } ]
+    */
+
 ```
 
 
