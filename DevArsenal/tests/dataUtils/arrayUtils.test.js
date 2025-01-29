@@ -167,7 +167,7 @@ let arr1=[1,2,3,4,5,6,7,8,9,0]
 
     // output : { Adam: 'Eve', apple: 'lemon', javascript: 'react' }
 
-//--test array to object insex as keys
+//--test array to object index as keys
 
     const arrayToObj_indexAsKeys = ['a','b','c','d']
 
