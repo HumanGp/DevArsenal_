@@ -1,5 +1,6 @@
 'use strict';
 
+
 // -------------------------------chunkArray------------------------- //
 /**
  * Splits an array into smaller chunks of a given size.
@@ -135,19 +136,34 @@ function sortByKey(arrayOfObj, key) {
   });
 }
 
-// Group By Key
+//------------------ Group By Key----------------//
+/**
+ * Groups an array of objects by a specified key.
+ * 
+ * @param {*} arrayObj - The array of objects to be grouped.
+ * @param {*} key - The key in each object to group by.
+ * @returns {Object} - Returns a grouped object where the objects with the same value under the specified key are grouped together.
+ */
 function groupByKey(arrayObj, key) {
- return arrayObj.reduce((result, obj) => {
-  const keyValue = obj[key]; // Get the value of the specified key
-  if (!result[keyValue]) {
-   result[keyValue] = []; // Initialize an array for the key if it doesn't exist
-  }
-  result[keyValue].push(obj); // Add the object to the corresponding group
-  return result;
- }, {});
+  return arrayObj.reduce((result, obj) => {
+    const keyValue = obj[key]; // Get the value of the specified key
+    if (!result[keyValue]) {
+      result[keyValue] = []; // Initialize an array for the key if it doesn't exist
+    }
+    result[keyValue].push(obj); // Add the object to the corresponding group
+    return result;
+  }, {});
 }
 
-//Partition Array
+
+//--------------------Partition Array---------------//
+/**
+ * Partitions an array into two arrays based on a condition.
+ * 
+ * @param {*} array - The array to be partitioned.
+ * @param {*} condition - A function that returns true or false for each element.
+ * @returns {Array[]} - Returns an array with two sub-arrays: one with elements that satisfy the condition and one with elements that do not.
+ */
 function partitionArray(array, condition) {
   return array.reduce(
     ([pass, fail], element) => {
@@ -162,19 +178,120 @@ function partitionArray(array, condition) {
   );
 }
 
-// Zip Arrays
+
+//------------------------ Zip Arrays------------//
+/**
+ * Combines multiple arrays into a single array of arrays, where each inner array contains elements from each input array at the same index.
+ * 
+ * @param  {...any} arrays - Multiple arrays to be zipped.
+ * @returns {Array[]} - Returns a new array with zipped elements.
+ */
 function zipArrays(...arrays) {
- // Find the length of the shortest array
- const minLength = Math.min(...arrays.map(arr => arr.length));
-
- // Create a new array by combining corresponding elements from each array
- const result = [];
- for (let i = 0; i < minLength; i++) {
-  result.push(arrays.map(arr => arr[i]));
- }
-
- return result;
+  const minLength = Math.min(...arrays.map(arr => arr.length)); // Find the length of the shortest array
+  const result = [];
+  for (let i = 0; i < minLength; i++) {
+    result.push(arrays.map(arr => arr[i])); // Create a new array by combining corresponding elements from each array
+  }
+  return result;
 }
+
+
+//-----------------------shuffle array----------//
+/**
+ * Randomly shuffles the elements of an array.
+ * 
+ * @param {*} array - The array to be shuffled.
+ * @returns {Array} - Returns the shuffled array.
+ */
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1)); // Random index from 0 to i
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]]; // Swap elements at i and randomIndex
+  }
+  return array;
+}
+
+
+//----------------cartesian product-------------//
+/**
+ * Computes the cartesian product of multiple arrays.
+ * 
+ * @param  {...any} arrays - Multiple arrays to compute the cartesian product.
+ * @returns {Array[]} - Returns an array of arrays, where each inner array is a combination of elements from the input arrays.
+ */
+function cartesianProduct(...arrays) {
+  let result = [[]]; // Start with a single element: an array with an empty array
+  arrays.forEach((array) => {
+    result = result.flatMap(res => array.map(element => [...res, element])); // Map each combination in result with each element in the current array
+  });
+  return result;
+}
+
+
+//---------- arrray to object --------------------//
+//--Array of key-value pairs into an object
+/**
+ * Converts an array of key-value pairs into an object.
+ * 
+ * @param {*} array - The array of key-value pairs.
+ * @returns {Object} - Returns an object constructed from the key-value pairs.
+ */
+function convertPairsToObject(array) {
+  const obj = Object.fromEntries(array);
+  return obj;
+}
+
+
+
+//--Array of elements to object with index a keys
+/**
+ * Converts an array of elements into an object with indices as keys.
+ * 
+ * @param {*} array - The array of elements.
+ * @returns {Object} - Returns an object where each key is an index and each value is the corresponding element from the array.
+ */
+function objectFromIndexedArray(array) {
+  const obj = array.reduce((acc, curr, index) => {
+    acc[index] = curr;
+    return acc;
+  }, {});
+  return obj;
+}
+
+
+
+//--array of elements to object with Custom Keys
+/**
+ * Converts an array of elements into an object with custom keys.
+ * 
+ * @param {Array} array - The array of elements.
+ * @param {Array} customKeys - An array of custom keys.
+ * @returns {Object} - Returns an object where each key is from customKeys and each value is from the array.
+ */
+function objectFromCustomKeys(array, customKeys) {
+  const obj = {};
+  // Ensure that the number of custom keys matches the number of elements in the array
+  const length = Math.min(array.length, customKeys.length);
+  for (let i = 0; i < length; i++) {
+    obj[customKeys[i]] = array[i]; // Assign each element to the corresponding custom key
+  }
+  return obj;
+}
+
+
+
+//--convert an Array of Objects to a single Object
+/**
+ * Converts an array of objects into a single object by merging them.
+ * 
+ * @param {*} array - The array of objects.
+ * @returns {Object} - Returns a single object that combines all the properties of the objects in the array.
+ */
+function mergeArrayOfObjects(array) {
+  const obj = Object.assign({}, ...array);
+  return obj;
+}
+
 
 
 
@@ -188,4 +305,13 @@ export {
   intersect,
    arrayDifference,
    sortByKey,
+   groupByKey,
+   partitionArray,
+   zipArrays,
+   shuffleArray,
+   cartesianProduct,
+   convertPairsToObject,
+   objectFromIndexedArray,
+   objectFromCustomKeys,
+   mergeArrayOfObjects,
 };
