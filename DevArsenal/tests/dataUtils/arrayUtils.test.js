@@ -85,6 +85,27 @@ let arr1=[1,2,3,4,5,6,7,8,9,0]
        }
     */
 
+//--- Test sort by multiple keys ---//
+
+const p_eople = [
+    { name: 'Alice', age: 30, city: 'New York' },
+    { name: 'Bob', age: 25, city: 'Chicago' },
+    { name: 'Charlie', age: 25, city: 'New York' },
+    { name: 'David', age: 30, city: 'Chicago' },
+  ];
+  
+  const sortedPeople = array.sortByMultipleKeys(p_eople, ['age', 'city']);
+  //console.log(sortedPeople);
+  
+  /* Expected output:
+  [
+    { name: 'Bob', age: 25, city: 'Chicago' },
+    { name: 'Charlie', age: 25, city: 'New York' },
+    { name: 'David', age: 30, city: 'Chicago' },
+    { name: 'Alice', age: 30, city: 'New York' }
+  ]
+  */
+
 //------test partition array ----------//
 //--test with even and odd
     let numbers =[1,2,3,4,5,6,7,8]

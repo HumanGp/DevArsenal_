@@ -136,6 +136,26 @@ function sortByKey(arrayOfObj, key) {
   });
 }
 
+//------------ Sort by Multiple Keys -------------------------------//
+// Sort an array by multiple keys.
+
+/**
+ * Sorts an array of objects by multiple keys.
+ * 
+ * @param {Object[]} arrayOfObj - The array of objects to be sorted.
+ * @param {string[]} keys - The keys to sort by, in order of priority.
+ * @returns {Object[]} A new array of objects sorted by the specified keys.
+ */
+function sortByMultipleKeys(arrayOfObj, keys) {
+  return arrayOfObj.slice().sort((a, b) => {
+    for (let key of keys) {
+      if (a[key] < b[key]) return -1;
+      if (a[key] > b[key]) return 1;
+    }
+    return 0;
+  });
+}
+
 //------------------ Group By Key----------------//
 /**
  * Groups an array of objects by a specified key.
@@ -293,25 +313,70 @@ function mergeArrayOfObjects(array) {
 }
 
 
+//------------ Sliding Window  -------------------------------//
+
+
+//------------ Find Union -------------------------------//
+// Return all unique elements from multiple arrays.
+
+
+//------------ Rotate Array -------------------------------//
+// Rotate an array by N positions.
+
+
+//------------ Sort by Multiple Keys -------------------------------//
+// Sort an array by multiple keys.
+
+
+//------------ Flatten and Sort Array -------------------------------//
+// Flatten and then sort a nested array.
+
+
+//------------ Sum Array -------------------------------//
+// Sum all numeric values in an array.
+
+
+//------------ Average Array -------------------------------//
+// Calculate the average of array elements.
+
+
+//------------ Count Occurrences -------------------------------//
+// Count occurrences of each element in an array.
+
+
+//------------ Array to String -------------------------------//
+// Convert an array to a comma-separated string.
+
+
+//------------ Array to CSV -------------------------------//
+// Convert an array of objects into CSV format.
 
 
 
 
 // -------------------------------Exports--------------------------- //
 export {
+  // Array manipulation
   chunkArray,
-  removeDuplicates,
   flattenArray,
+  removeDuplicates,
   intersect,
-   arrayDifference,
-   sortByKey,
-   groupByKey,
-   partitionArray,
-   zipArrays,
-   shuffleArray,
-   cartesianProduct,
-   convertPairsToObject,
-   objectFromIndexedArray,
-   objectFromCustomKeys,
-   mergeArrayOfObjects,
+  arrayDifference,
+
+  // Sorting and grouping
+  sortByKey,
+  groupByKey,
+  partitionArray,
+  sortByMultipleKeys, // Example of additional function
+
+  // Combination and transformation
+  zipArrays,
+  shuffleArray,
+  cartesianProduct,
+
+  // Conversion utilities
+  convertPairsToObject,
+  objectFromIndexedArray,
+  objectFromCustomKeys,
+  mergeArrayOfObjects,
 };

@@ -179,6 +179,37 @@ console.log(array.groupByKey(keyArray, 'id'));
 }
 */
 ```
+
+### Sort by Multiple Keys
+```javascript
+/**
+Sorts an array of objects by multiple keys.
+@param {Object[]} arrayOfObj - The array of objects to be sorted.
+@param {string[]} keys - The keys to sort by, in order of priority.
+@returns {Object[]} A new array of objects sorted by the specified keys.
+ */
+```
+#### Example
+```javascript
+const people = [
+  { name: 'Alice', age: 30, city: 'New York' },
+  { name: 'Bob', age: 25, city: 'Chicago' },
+  { name: 'Charlie', age: 25, city: 'New York' },
+  { name: 'David', age: 30, city: 'Chicago' },
+];
+
+const sortedPeople = array.sortByMultipleKeys(people, ['age', 'city']);
+console.log(sortedPeople);
+/* Output:
+[
+  { name: 'Bob', age: 25, city: 'Chicago' },
+  { name: 'Charlie', age: 25, city: 'New York' },
+  { name: 'David', age: 30, city: 'Chicago' },
+  { name: 'Alice', age: 30, city: 'New York' }
+]
+*/
+```
+
 ### Partition Array
 ```javascript
 /**
