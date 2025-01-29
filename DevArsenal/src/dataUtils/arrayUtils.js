@@ -324,10 +324,6 @@ function mergeArrayOfObjects(array) {
 // Rotate an array by N positions.
 
 
-//------------ Sort by Multiple Keys -------------------------------//
-// Sort an array by multiple keys.
-
-
 //------------ Flatten and Sort Array -------------------------------//
 // Flatten and then sort a nested array.
 
@@ -367,7 +363,7 @@ export {
   sortByKey,
   groupByKey,
   partitionArray,
-  sortByMultipleKeys, // Example of additional function
+  sortByMultipleKeys, 
 
   // Combination and transformation
   zipArrays,
