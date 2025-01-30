@@ -1,6 +1,7 @@
 //import from central module index.js
 import { array } from "../../src/dataUtils/index.js";
 
+
 //----test chunking an array------//
 let arr1=[1,2,3,4,5,6,7,8,9,0]
 //console.log(array.chunkArray(arr1,2))
@@ -214,6 +215,56 @@ const p_eople = [
 
      //console.log(array. mergeArrayOfObjects(objs_ToObj))
      // output : { name: 'Tom', age: 32, nationality: 'USA' }
+
+
+//-----test sliding window   ---------------//
+    const maxSumSubarray = (arr, k) => {
+    return array.slidingWindow(arr, k, ({ windowStart, windowEnd, result }) => {
+      const windowSum = arr.slice(windowStart, windowEnd + 1).reduce((sum, num) => sum + num, 0);
+      return Math.max(result || -Infinity, windowSum);
+    });
+    };
+  
+
+    //console.log(maxSumSubarray([2, 1, 5, 1, 3, 2], 3));
+    //Output: 9
+
+
+//-----test find union-----------------//
+    const un1=[1,2,3,4]
+    const un2=[1,2,9,8]
+
+    //console.log(array.findUnion(un1,un2))
+    // output : [ 1, 2, 3, 4, 9, 8 ]
+
+
+//--find rotate Array--------------------//
+     const rotate=[1,2,3,4,5]
+
+     //console.log(array.rotateArray(rotate,2))
+     //outpu : [ 3, 4, 5, 1, 2 ]
+
+
+//----test Array to csv------------------//
+    const data = [
+       { name: 'Alice', age: 25, city: 'New York' },
+       { name: 'Bob', age: 30, city: 'San Francisco, CA' },
+       { name: 'Charlie', age: 35, city: 'Los Angeles\nCA' },
+       { name: 'Dave', age: 40, city: 'Seattle, "WA"' },
+  ];
+  
+  console.log(array.arrayToCSV(data));
+  /*
+   output :
+   
+    name,age,city
+    Alice,25,New York
+    Bob,30,"San Francisco, CA"
+    Charlie,35,"Los Angeles
+    CA"
+    Dave,40,"Seattle, ""WA"""
+
+  */
 
 
   

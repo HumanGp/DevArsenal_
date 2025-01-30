@@ -403,5 +403,96 @@ const objs_ToObj = [
 console.log(array.mergeArrayOfObjects(objs_ToObj));
 // Output: { name: 'Tom', age: 32, nationality: 'USA' }
 ```
+### sliding window
+```javascript
+ /**
+ * Applies a sliding window technique on an array and processes each window using a callback function.
+ *
+ * @param {Array} arr - The array to be processed.
+ * @param {number} k - The size of the window.
+ * @param {Function} callback - A function that processes each window. It receives an object with the window's start and end indices and the current result.
+ * @returns {*} - Returns the final result as determined by the callback function.
+ */
+```
+ ##### example
+ ```javascript
+   const maxSumSubarray = (arr, k) => {
+    return array.slidingWindow(arr, k, ({ windowStart, windowEnd, result }) => {
+      const windowSum = arr.slice(windowStart, windowEnd + 1).reduce((sum, num) => sum + num, 0);
+      return Math.max(result || -Infinity, windowSum);
+    });
+    };
+ ```
 
+
+### find union
+```javascript
+/**
+ * Returns all unique elements from multiple arrays.
+ *
+ * @param  {...any} arrays - Multiple arrays to find the union of.
+ * @returns {Array} - An array containing all unique elements from the input arrays.
+ */
+```
+  ##### example
+ ```javascript
+   const un1=[1,2,3,4]
+    const un2=[1,2,9,8]
+
+    //console.log(array.findUnion(un1,un2))
+    // output : [ 1, 2, 3, 4, 9, 8 ]
+ ```
+
+### rotate array
+```javascript
+/**
+ * Rotates an array by N positions.
+ *
+ * @param {Array} array - The array to rotate.
+ * @param {number} n - The number of positions to rotate the array by.
+ * @returns {Array} - The rotated array.
+ */
+```
+  ##### example
+ ```javascript
+      const rotate=[1,2,3,4,5]
+
+     //console.log(array.rotateArray(rotate,2))
+     //outpu : [ 3, 4, 5, 1, 2 ]
+ ```
+
+### Array to CSV
+```javascript
+/**
+ * Converts an array of objects into CSV format.
+ *
+ * @param {Array} array - The array of objects to be converted.
+ * @param {string} [delimiter=','] - The delimiter to use for separating values (default is a comma).
+ * @returns {string} - The CSV formatted string.
+ * @throws {TypeError} - Throws an error if the input is not a non-empty array of objects.
+ */
+```
+  ##### example
+ ```javascript
+     const data = [
+       { name: 'Alice', age: 25, city: 'New York' },
+       { name: 'Bob', age: 30, city: 'San Francisco, CA' },
+       { name: 'Charlie', age: 35, city: 'Los Angeles\nCA' },
+       { name: 'Dave', age: 40, city: 'Seattle, "WA"' },
+  ];
+  
+  console.log(array.arrayToCSV(data));
+  /*
+   output :
+   
+    name,age,city
+    Alice,25,New York
+    Bob,30,"San Francisco, CA"
+    Charlie,35,"Los Angeles
+    CA"
+    Dave,40,"Seattle, ""WA"""
+
+  */
+
+ ```
 

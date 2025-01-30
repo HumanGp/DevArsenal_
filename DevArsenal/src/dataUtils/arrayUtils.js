@@ -1,6 +1,5 @@
 'use strict';
 
-
 // -------------------------------chunkArray------------------------- //
 /**
  * Splits an array into smaller chunks of a given size.
@@ -21,6 +20,8 @@ function chunkArray(array, size) {
   }
   return result;
 }
+
+
 
 // -------------------------------removeDuplicates------------------- //
 /**
@@ -54,6 +55,8 @@ const removeDuplicates = (array) => {
   return processArray(array);
 };
 
+
+
 // -------------------------------flattenArray----------------------- //
 /**
  * Flattens a nested array into a single-dimensional array.
@@ -80,6 +83,8 @@ function flattenArray(arr) {
 
   return result;
 }
+
+
 
 // -------------------------------intersect-------------------------- //
 /**
@@ -117,6 +122,8 @@ function arrayDifference(arr1,arr2) {
   
 }
 
+
+
 //-------------------sort by key-------//
 /**
  * Sorts an array of objects by a specified key.
@@ -135,6 +142,8 @@ function sortByKey(arrayOfObj, key) {
     return 0; // Fallback for non-comparable types
   });
 }
+
+
 
 //------------ Sort by Multiple Keys -------------------------------//
 // Sort an array by multiple keys.
@@ -156,6 +165,8 @@ function sortByMultipleKeys(arrayOfObj, keys) {
   });
 }
 
+
+
 //------------------ Group By Key----------------//
 /**
  * Groups an array of objects by a specified key.
@@ -174,6 +185,7 @@ function groupByKey(arrayObj, key) {
     return result;
   }, {});
 }
+
 
 
 //--------------------Partition Array---------------//
@@ -199,6 +211,7 @@ function partitionArray(array, condition) {
 }
 
 
+
 //------------------------ Zip Arrays------------//
 /**
  * Combines multiple arrays into a single array of arrays, where each inner array contains elements from each input array at the same index.
@@ -216,6 +229,7 @@ function zipArrays(...arrays) {
 }
 
 
+
 //-----------------------shuffle array----------//
 /**
  * Randomly shuffles the elements of an array.
@@ -230,6 +244,7 @@ function shuffleArray(array) {
   }
   return array;
 }
+
 
 
 //----------------cartesian product-------------//
@@ -304,48 +319,117 @@ function objectFromCustomKeys(array, customKeys) {
 /**
  * Converts an array of objects into a single object by merging them.
  * 
- * @param {*} array - The array of objects.
+ * @param {Array} array - The array of objects to be merged.
  * @returns {Object} - Returns a single object that combines all the properties of the objects in the array.
  */
 function mergeArrayOfObjects(array) {
+  // Use Object.assign to merge all objects in the array into a single object.
+  // The spread operator (...) is used to pass each object in the array as an argument to Object.assign.
   const obj = Object.assign({}, ...array);
+  
+  // Return the merged object.
   return obj;
 }
 
 
+
 //------------ Sliding Window  -------------------------------//
+/**
+ * Applies a sliding window technique on an array and processes each window using a callback function.
+ *
+ * @param {Array} arr - The array to be processed.
+ * @param {number} k - The size of the window.
+ * @param {Function} callback - A function that processes each window. It receives an object with the window's start and end indices and the current result.
+ * @returns {*} - Returns the final result as determined by the callback function.
+ */
+function slidingWindow(arr, k, callback) {
+  let windowStart = 0; // Initialize the start of the window
+  let result = null;   // Initialize the result that will be returned
+
+  // Iterate over the array with the windowEnd pointer
+  for (let windowEnd = 0; windowEnd < arr.length; windowEnd++) {
+    // Perform custom logic using the callback function, passing the current window state
+    result = callback({ windowStart, windowEnd, result });
+
+    // Slide the window forward once it reaches the specified size k
+    if (windowEnd >= k - 1) {
+      windowStart++; // Move the start of the window forward
+    }
+  }
+
+  return result; // Return the final result after processing all windows
+}
 
 
 //------------ Find Union -------------------------------//
 // Return all unique elements from multiple arrays.
+/**
+ * Returns all unique elements from multiple arrays.
+ *
+ * @param  {...any} arrays - Multiple arrays to find the union of.
+ * @returns {Array} - An array containing all unique elements from the input arrays.
+ */
+function findUnion(...arrays) {
+  // Use the flat method to flatten the arrays into a single array
+  // Then use a Set to filter out duplicate elements
+  // Finally, spread the Set back into an array to return
+  return [...new Set(arrays.flat())];
+}
+
 
 
 //------------ Rotate Array -------------------------------//
-// Rotate an array by N positions.
+/**
+ * Rotates an array by N positions.
+ *
+ * @param {Array} array - The array to rotate.
+ * @param {number} n - The number of positions to rotate the array by.
+ * @returns {Array} - The rotated array.
+ */
+function rotateArray(array, n) {
+  const len = array.length;
+  n = n % len; // Handle cases where n > array length
 
+  // Concatenate two slices: from n to end, and from start to n
+  return array.slice(n).concat(array.slice(0, n));
+}
 
-//------------ Flatten and Sort Array -------------------------------//
-// Flatten and then sort a nested array.
-
-
-//------------ Sum Array -------------------------------//
-// Sum all numeric values in an array.
-
-
-//------------ Average Array -------------------------------//
-// Calculate the average of array elements.
-
-
-//------------ Count Occurrences -------------------------------//
-// Count occurrences of each element in an array.
-
-
-//------------ Array to String -------------------------------//
-// Convert an array to a comma-separated string.
 
 
 //------------ Array to CSV -------------------------------//
-// Convert an array of objects into CSV format.
+/**
+ * Converts an array of objects into CSV format.
+ *
+ * @param {Array} array - The array of objects to be converted.
+ * @param {string} [delimiter=','] - The delimiter to use for separating values (default is a comma).
+ * @returns {string} - The CSV formatted string.
+ * @throws {TypeError} - Throws an error if the input is not a non-empty array of objects.
+ */
+function arrayToCSV(array, delimiter = ',') {
+  // Check if the input is a non-empty array
+  if (!Array.isArray(array) || array.length === 0) {
+    throw new TypeError('Input must be a non-empty array of objects.');
+  }
+
+  // Extract the headers from the first object in the array
+  const headers = Object.keys(array[0]).join(delimiter);
+
+  // Map over each object in the array to create CSV rows
+  const rows = array.map(obj => 
+    Object.values(obj).map(value => {
+      // Check if the value needs to be escaped
+      if (typeof value === 'string' && (value.includes(delimiter) || value.includes('\n') || value.includes('"'))) {
+        // Escape double quotes and wrap the value in quotes
+        return `"${value.replace(/"/g, '""')}"`;
+      }
+      // Return the value as is if no escaping is needed
+      return value;
+    }).join(delimiter) // Join the values with the specified delimiter
+  );
+
+  // Return the CSV string with headers followed by rows, each separated by a newline
+  return [headers, ...rows].join('\n');
+}
 
 
 
@@ -358,6 +442,7 @@ export {
   removeDuplicates,
   intersect,
   arrayDifference,
+  findUnion,
 
   // Sorting and grouping
   sortByKey,
@@ -369,10 +454,13 @@ export {
   zipArrays,
   shuffleArray,
   cartesianProduct,
+  rotateArray,
 
   // Conversion utilities
   convertPairsToObject,
   objectFromIndexedArray,
   objectFromCustomKeys,
   mergeArrayOfObjects,
+  slidingWindow,
+  arrayToCSV,
 };
