@@ -407,33 +407,45 @@ function rotateArray(array, n) {
  * @throws {TypeError} - Throws an error if the input is not a non-empty array of objects.
  */
 function arrayToCSV(array, delimiter = ',') {
-  // Check if the input is a non-empty array
-  if (!Array.isArray(array) || array.length === 0) {
-    throw new TypeError('Input must be a non-empty array of objects.');
+ // Check if the input is a non-empty array
+ if (!Array.isArray(array) || array.length === 0) {
+  throw new TypeError('Input must be a non-empty array of objects.');
+ }
+
+ // Extract the headers from the first object in the array
+ const headers = Object.keys(array[0]);
+
+ // Map over each object in the array to create CSV rows
+ const rows = array.map(obj =>
+  headers.map(header => {
+   const value = obj[header];
+
+   // Convert non-string values to strings
+   const stringValue = value === null || value === undefined ? '' : String(value);
+
+   // Escape double quotes and wrap the value in quotes if necessary
+   if (typeof stringValue === 'string' && (stringValue.includes(delimiter) || stringValue.includes('\n') || stringValue.includes('"'))) {
+    return `"${stringValue.replace(/"/g, '""')}"`;
+   }
+   return stringValue;
+  }).join(delimiter) // Join the values with the specified delimiter
+ );
+
+ // Escape headers and join them with the delimiter
+ const escapedHeaders = headers.map(header => {
+  if (header.includes(delimiter) || header.includes('\n') || header.includes('"')) {
+   return `"${header.replace(/"/g, '""')}"`;
   }
+  return header;
+ }).join(delimiter);
 
-  // Extract the headers from the first object in the array
-  const headers = Object.keys(array[0]).join(delimiter);
-
-  // Map over each object in the array to create CSV rows
-  const rows = array.map(obj => 
-    Object.values(obj).map(value => {
-      // Check if the value needs to be escaped
-      if (typeof value === 'string' && (value.includes(delimiter) || value.includes('\n') || value.includes('"'))) {
-        // Escape double quotes and wrap the value in quotes
-        return `"${value.replace(/"/g, '""')}"`;
-      }
-      // Return the value as is if no escaping is needed
-      return value;
-    }).join(delimiter) // Join the values with the specified delimiter
-  );
-
-  // Return the CSV string with headers followed by rows, each separated by a newline
-  return [headers, ...rows].join('\n');
+ // Return the CSV string with headers followed by rows, each separated by a newline
+ return [escapedHeaders, ...rows].join('\n');
 }
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -441,6 +453,8 @@ function arrayToCSV(array, delimiter = ',') {
 
 
 
+=======
+>>>>>>> 4e1fd832b3c4ba7ba33fffdb9c2cb3fe0f09172f
 // -------------------------------Exports--------------------------- //
 export {
   // Array manipulation
