@@ -1,5 +1,10 @@
 # **DevArsenal** ⚡️
 
+<p align="center">
+  <img src="logo.jpg" alt="DevArsenal Logo" width="200">
+</p>
+
+
 **DevArsenal** is the ultimate *toolkit* for JavaScript developers who want to level up their coding game. Packed with a suite of powerful, reusable utilities, **DevArsenal** cuts down the time you spend on repetitive tasks and supercharges your workflow. Whether you're wrangling arrays, manipulating objects, or handling APIs, DevArsenal has got your back!
 
 ### **Why DevArsenal?**
