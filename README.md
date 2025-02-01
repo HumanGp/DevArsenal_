@@ -11,12 +11,14 @@
 <hr>
 
 <div align="center" style="line-height: 1;">
+<!--
   <a href="https://your-homepage.com" target="_blank" style="margin: 2px;">
     <img alt="Homepage" src="https://img.shields.io/badge/Homepage-DevArsenal-blue?style=for-the-badge" style="display: inline-block; vertical-align: middle;"/>
   </a>
   <a href="https://npmjs.com/package/dev-arsenal" target="_blank" style="margin: 2px;">
     <img alt="npm Version" src="https://img.shields.io/npm/v/dev-arsenal?color=red&style=for-the-badge" style="display: inline-block; vertical-align: middle;"/>
   </a>
+  -->
   <a href="https://github.com/HumanGp/DevArsenal_" target="_blank" style="margin: 2px;">
   <img alt="GitHub Repo" src="https://img.shields.io/badge/GitHub-DevArsenal-black?logo=github&style=for-the-badge" style="display: inline-block; vertical-align: middle;"/>
 </a>
