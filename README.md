@@ -1,8 +1,46 @@
 # **DevArsenal** ⚡️
 
+<!-- markdownlint-disable first-line-h1 -->
+<!-- markdownlint-disable html -->
+<!-- markdownlint-disable no-duplicate-header -->
+
+<div align="center">
+  <img src="logo.jpg" width="60%" alt="DevArsenal Logo" />
+</div>
+
+<hr>
+
+<div align="center" style="line-height: 1;">
+  <a href="https://your-homepage.com" target="_blank" style="margin: 2px;">
+    <img alt="Homepage" src="https://img.shields.io/badge/Homepage-DevArsenal-blue?style=for-the-badge" style="display: inline-block; vertical-align: middle;"/>
+  </a>
+  <a href="https://npmjs.com/package/dev-arsenal" target="_blank" style="margin: 2px;">
+    <img alt="npm Version" src="https://img.shields.io/npm/v/dev-arsenal?color=red&style=for-the-badge" style="display: inline-block; vertical-align: middle;"/>
+  </a>
+  <a href="https://github.com/yourusername/dev-arsenal" target="_blank" style="margin: 2px;">
+    <img alt="GitHub Repo" src="https://img.shields.io/badge/GitHub-DevArsenal-black?logo=github&style=for-the-badge" style="display: inline-block; vertical-align: middle;"/>
+  </a>
+</div>
+
+<div align="center" style="line-height: 1;">
+  <a href="https://discord.gg/your-server" target="_blank" style="margin: 2px;">
+    <img alt="Discord" src="https://img.shields.io/badge/Discord-DevArsenal-7289da?logo=discord&style=for-the-badge" style="display: inline-block; vertical-align: middle;"/>
+  </a>
+  <a href="https://twitter.com/your-twitter" target="_blank" style="margin: 2px;">
+    <img alt="Twitter Follow" src="https://img.shields.io/badge/Twitter-DevArsenal-blue?logo=x&style=for-the-badge" style="display: inline-block; vertical-align: middle;"/>
+  </a>
+</div>
+
+<div align="center" style="line-height: 1;">
+  <a href="https://github.com/yourusername/dev-arsenal/blob/main/LICENSE" style="margin: 2px;">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" style="display: inline-block; vertical-align: middle;"/>
+  </a>
+</div>
+
 <p align="center">
-  <img src="logo.jpg" alt="DevArsenal Logo" width="200">
+  <a href="DevArsenal_Docs.pdf"><b>Documentation</b> 📖</a>
 </p>
+
 
 
 **DevArsenal** is the ultimate *toolkit* for JavaScript developers who want to level up their coding game. Packed with a suite of powerful, reusable utilities, **DevArsenal** cuts down the time you spend on repetitive tasks and supercharges your workflow. Whether you're wrangling arrays, manipulating objects, or handling APIs, DevArsenal has got your back!
