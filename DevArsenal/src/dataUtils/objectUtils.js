@@ -19,7 +19,6 @@ function deepClone(obj) {
         clonedObj[key] = deepClone(obj[key]); // Don't just copy—recursively clone the inner layers of your objects.
       }
     }
-  
     return clonedObj;
   }
   
@@ -158,8 +157,6 @@ function deepClone(obj) {
     }
     return result;
   }
-  
-
 
   /**
    * Map over the values of an object. Because why should keys get all the fun? 🎉

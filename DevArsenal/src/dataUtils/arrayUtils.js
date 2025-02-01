@@ -443,18 +443,6 @@ function arrayToCSV(array, delimiter = ',') {
  return [escapedHeaders, ...rows].join('\n');
 }
 
-
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-=======
->>>>>>> 4e1fd832b3c4ba7ba33fffdb9c2cb3fe0f09172f
 // -------------------------------Exports--------------------------- //
 export {
   // Array manipulation
