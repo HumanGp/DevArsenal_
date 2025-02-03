@@ -93,7 +93,7 @@ export function validateBatch(dataArray, schema) {
 // console.log(validateBatch([{ name: 'Alice' }, { name: '' }], userSchema));
 
 /* --------------------------------------------
- * ⚡ Async Validation Pipeline
+ * ⚡  Async Validation Pipeline
  * -------------------------------------------- */
 
 /**
